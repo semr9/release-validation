@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "name": "{{.name}}",
+  "metricName": "{{.slo_metricName}}",
+  "metricExpression": "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())",
+  "evaluationType": "AGGREGATE",
+  "filter": "type(\"SERVICE\"),entityName.contains(\"{{.service_name}}\")",
+  "evaluationWindow": "-1w",
+  "targetSuccess": 90.0,
+  "targetWarning": 99.0,
+  "errorBudgetBurnRate": {
+    "burnRateVisualizationEnabled": true,
+    "fastBurnThreshold": 10.0
+  }
+}

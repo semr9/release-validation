@@ -1,0 +1,27 @@
+{
+  "title": "{{.name}}",
+  "triggerType": "Manual",
+  "trigger": {},
+  "description": "",
+  "isPrivate": true,
+  "labels": {},
+  "schemaVersion": 3,
+  "taskDefaults": {},
+  "tasks": {
+    "site_reliability_guardian_1": {
+      "name": "{{.srg_name}}",
+      "input": {
+        "objectId": "{{.srg_id}}",
+        "executionId": "{{`{{`}} execution().id {{`}}`}}",
+        "timeframeInputType": "timeframeSelector"
+      },
+      "action": "dynatrace.site.reliability.guardian:validate-guardian-action",
+      "position": {
+        "x": 0,
+        "y": 1
+      },
+      "description": "Automation action to start a Site Reliability Guardian validation",
+      "predecessors": []
+    }
+  }
+}

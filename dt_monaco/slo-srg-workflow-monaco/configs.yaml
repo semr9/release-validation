@@ -1,0 +1,46 @@
+configs:
+- id: slo_availability_{{service}}
+  config:
+    name: slo_availability_{{service}}
+    parameters:
+      slo_metricName: "slo_availability_{{service}}"
+      service_name:
+        type: environment
+        name: SERVICE_NAME
+    template: slo_availability.json
+    skip: false
+  type:
+    settings:
+      schema: builtin:monitoring.slo
+      schemaVersion: 6.0.13
+      scope: environment
+- id: srg_service_{{service}}
+  config:
+    name: srg_service_{{service}}
+    parameters:
+      slo_metricName: "slo_availability_{{service}}"
+      service_name:
+        type: environment
+        name: SERVICE_NAME
+    template: srg.json
+    skip: false
+  type:
+    settings:
+      schema: app:dynatrace.site.reliability.guardian:guardians
+      schemaVersion: 1.0.2
+      scope: environment
+- id: workflow_service_{{service}}
+  config:
+    name: workflow_service_{{service}}
+    parameters:
+      srg_id:
+        configId: srg_service_{{service}}
+        configType: app:dynatrace.site.reliability.guardian:guardians
+        property: id
+        type: reference
+      srg_name: srg_service_{{service}}
+    template: workflow.json
+    skip: false
+  type:
+    automation:
+      resource: workflow

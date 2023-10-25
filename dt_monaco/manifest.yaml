@@ -1,0 +1,21 @@
+manifestVersion: "1.0"
+projects:
+  - name: slo-srg-workflow-monaco
+    path: slo-srg-workflow-monaco
+environmentGroups:
+- name: default
+  environments:
+  - name: slo-srg-workflow
+    url:
+      type: environment
+      value: DT_URL_ENV
+    auth:
+      token:
+        name: DT_TOKEN_ENV
+      oAuth:
+        clientId:
+          name: DT_OAUTH_CLIENT_ID_ENV_VAR
+        clientSecret:
+          name: DT_OAUTH_CLIENT_SECRET_ENV_VAR
+        tokenEndpoint:
+          value: https://sso-sprint.dynatracelabs.com/sso/oauth2/token

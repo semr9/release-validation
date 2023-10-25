@@ -1,0 +1,36 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Servicio demo
+paths:
+  /:
+    get:
+      summary: Información del servicio
+      responses:
+        '200':
+          description: Operación exitosa
+          content:
+            application/json:
+              example:
+                nombre_servicio: demo
+                tecnologia: nodejs
+  /date:
+    get:
+      summary: Fecha actual del servidor
+      responses:
+        '200':
+          description: Operación exitosa
+          content:
+            application/json:
+              example:
+                fecha_actual: "2023-08-06T10:00:00.000Z"
+  /time:
+    get:
+      summary: Tiempo que lleva corriendo el servicio
+      responses:
+        '200':
+          description: Operación exitosa
+          content:
+            application/json:
+              example:
+                tiempo_corriendo: "1000ms"

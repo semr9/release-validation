@@ -1,0 +1,14 @@
+{
+  "name": "{{.name}}",
+  "tags": [],
+  "objectives": [
+    {
+      "name": "{{.slo_metricName}}",
+      "objectiveType": "REFERENCE_SLO",
+      "referenceSlo": "func:slo.{{.slo_metricName}}",
+      "comparisonOperator": "GREATER_THAN_OR_EQUAL",
+      "target": 90.0,
+      "warning": 99.0
+    }
+  ]
+}
